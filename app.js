@@ -15,8 +15,10 @@ app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
 app.use((_req, res) => res.status(404).json({ error: 'Ruta no encontrada.' }));
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
 
 module.exports = app;
