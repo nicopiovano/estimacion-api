@@ -5,20 +5,25 @@ const COMPLEXITY_MULTIPLIERS = {
   muy_alta: 2.0,
 };
 
-const HOURLY_RATE_USD = 50;
+const HOURLY_RATE_USD = 15;
 const HOURS_PER_DAY = 8;
 const CONCURRENT_USERS_RATIO = 0.05;
 
 function calculateRequestsPerDay(usuariosEstimados, requestsPorUsuario) {
-  if (typeof usuariosEstimados !== 'number' || typeof requestsPorUsuario !== 'number') {
-    throw new Error('usuariosEstimados y requestsPorUsuario deben ser números.');
+  if (
+    typeof usuariosEstimados !== "number" ||
+    typeof requestsPorUsuario !== "number"
+  ) {
+    throw new Error(
+      "usuariosEstimados y requestsPorUsuario deben ser números.",
+    );
   }
   return usuariosEstimados * requestsPorUsuario;
 }
 
 function calculateConcurrentUsers(usuariosEstimados) {
-  if (typeof usuariosEstimados !== 'number') {
-    throw new Error('usuariosEstimados debe ser un número.');
+  if (typeof usuariosEstimados !== "number") {
+    throw new Error("usuariosEstimados debe ser un número.");
   }
   return Math.ceil(usuariosEstimados * CONCURRENT_USERS_RATIO);
 }
@@ -26,14 +31,16 @@ function calculateConcurrentUsers(usuariosEstimados) {
 function calculateAdjustedHours(horasEstimadas, complejidad) {
   const multiplier = COMPLEXITY_MULTIPLIERS[complejidad];
   if (!multiplier) {
-    throw new Error(`Complejidad inválida: ${complejidad}. Valores válidos: baja, media, alta, muy_alta.`);
+    throw new Error(
+      `Complejidad inválida: ${complejidad}. Valores válidos: baja, media, alta, muy_alta.`,
+    );
   }
   return Math.ceil(horasEstimadas * multiplier);
 }
 
 function calculateFinalPrice(adjustedHours, hourlyRate = HOURLY_RATE_USD) {
-  if (typeof adjustedHours !== 'number') {
-    throw new Error('adjustedHours debe ser un número.');
+  if (typeof adjustedHours !== "number") {
+    throw new Error("adjustedHours debe ser un número.");
   }
   return adjustedHours * hourlyRate;
 }
@@ -51,9 +58,15 @@ function computeEstimation(analysisData) {
     horas_estimadas,
   } = analysisData;
 
-  const requestsTotalesDiarios = calculateRequestsPerDay(usuarios_estimados, requests_por_usuario_por_dia);
+  const requestsTotalesDiarios = calculateRequestsPerDay(
+    usuarios_estimados,
+    requests_por_usuario_por_dia,
+  );
   const usuariosConcurrentes = calculateConcurrentUsers(usuarios_estimados);
-  const horasTotalesAjustadas = calculateAdjustedHours(horas_estimadas, complejidad);
+  const horasTotalesAjustadas = calculateAdjustedHours(
+    horas_estimadas,
+    complejidad,
+  );
   const precioFinal = calculateFinalPrice(horasTotalesAjustadas);
   const diasEntrega = calculateDeliveryDays(horasTotalesAjustadas);
 

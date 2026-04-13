@@ -1,0 +1,43 @@
+REPORTE DE PRECIOS — TEST AUTOMATIZADO
+Generado: 13/4/2026, 04:04:11
+Backend: http://localhost:3001 | Modelo: llama-3.3-70b-versatile
+Descripción fija: "Quiero una plataforma digital para gestionar mi negocio, con registro de usuarios, panel de control y reportes básicos."
+==========================================================================================
+
+#	Plataforma	Público	Contexto	Modelo negocio	Urgencia	Complejidad	Hs IA	Mult.	Hs ajust.	Precio USD	Días
+------------------------------------------------------------------------------------------
+01	web	personas	lucrativo	suscripcion	semanas	media	120	1.3	156	$1248	20
+02	web	personas	salud	pago_unico	semanas	media	120	1.3	156	$1248	20
+03	web	profesionales	lucrativo	suscripcion	semanas	media	150	1.3	195	$1560	25
+04	web	profesionales	educativo	gratuito	semanas	media	120	1.3	156	$1248	20
+05	web	emprendimiento	menos_100	suscripcion	semanas	media	120	1.3	156	$1248	20
+06	web	emprendimiento	mas_10000	suscripcion	ya	alta	240	1.6	384	$3072	48
+07	web	tiendas	100_1000	pago_unico	semanas	media	120	1.3	156	$1248	20
+08	web	tiendas	mas_10000	suscripcion	ya	alta	300	1.6	480	$3840	60
+09	app	personas	lucrativo	pago_unico	semanas	media	160	1.3	208	$1664	26
+10	app	profesionales	salud	suscripcion	semanas	media	180	1.3	234	$1872	30
+11	app	emprendimiento	100_1000	suscripcion	semanas	media	200	1.3	260	$2080	33
+12	app	tiendas	1000_10000	suscripcion	ya	media	200	1.3	260	$2080	33
+13	ambas	personas	educativo	gratuito	sin_apuro	media	200	1.3	260	$2080	33
+14	ambas	profesionales	lucrativo	suscripcion	semanas	media	180	1.3	234	$1872	30
+15	ambas	emprendimiento	1000_10000	suscripcion	semanas	media	240	1.3	312	$2496	39
+16	ambas	tiendas	mas_10000	suscripcion	ya	alta	540	1.6	864	$6912	108
+
+==========================================================================================
+RESUMEN
+----------------------------------------
+Total probadas : 16
+Exitosas       : 16
+Fallidas       : 0
+Precio mínimo  : $1248
+Precio máximo  : $6912
+Precio promedio: $2236
+
+Por complejidad:
+  media     : 13 casos | $1248 – $2496
+  alta      : 3 casos | $3072 – $6912
+
+Por plataforma:
+  web       : promedio $1839
+  app       : promedio $1924
+  ambas     : promedio $3340
